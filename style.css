@@ -27,14 +27,12 @@ body {
   font-size: 14px;
   margin-left: 10px;
   padding: 5px 15px 5px 15px;
-  /* new learning */
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
 }
 
 .container {
-  /* new learning */
   perspective: 1000px;
   margin-bottom: 30px;
 }
@@ -44,7 +42,6 @@ body {
   width: 15px;
   height: 20px;
   margin: 3px;
-  /* new learning */
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -61,7 +58,6 @@ body {
   background-color: #6feaf6;
 }
 
-/* new learning */
 .seat:not(.occupied):hover {
   cursor: pointer;
   transform: scale(1.2);
@@ -101,7 +97,6 @@ body {
   height: 70px;
   width: 100%;
   box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
-  /* new learning */
   transform: rotateX(-45deg);
 }
 
