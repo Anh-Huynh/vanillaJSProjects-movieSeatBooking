@@ -3,12 +3,14 @@ const seats = document.querySelectorAll('.row .seat:not(.occupied)');
 const seatCountText = document.getElementById('count');
 const totalPriceText = document.getElementById('total');
 const selectedMovie = document.getElementById('movie');
+const movieTitle = document.getElementById('movie-title');
 
 populateUI();
 
 // update seat count and price
 function updateSelectedCount() {
   const selectedMoviePrice = +localStorage.getItem('moviePrice');
+  const selectedMovideTitle = localStorage.getItem('movieTitle');
 
   const moviePrice = selectedMoviePrice
     ? selectedMoviePrice
@@ -20,7 +22,8 @@ function updateSelectedCount() {
 
   // set text dynamically
   seatCountText.innerText = totalSelectedSeats;
-  totalPriceText.innerText = moviePrice * totalSelectedSeats;
+  totalPriceText.innerText = `$${moviePrice * totalSelectedSeats}`;
+  movieTitle.innerText = selectedMovideTitle;
 }
 
 function saveSeatSelection() {
@@ -32,9 +35,10 @@ function saveSeatSelection() {
   localStorage.setItem('seatSelection', JSON.stringify(selectedSeatIndex));
 }
 
-function saveMovieSelection(moviePrice, movieIndex) {
+function saveMovieSelection(moviePrice, movieIndex, movieTitle) {
   localStorage.setItem('moviePrice', moviePrice);
   localStorage.setItem('movieIndex', movieIndex);
+  localStorage.setItem('movieTitle', movieTitle);
 }
 
 function populateUI() {
@@ -70,11 +74,15 @@ container.addEventListener('click', (e) => {
 selectedMovie.addEventListener('change', (e) => {
   // update movie price upon picking a different movie
   moviePrice = +e.target.value;
+  const movieTitle = e.target.selectedOptions[0].dataset.title;
   const movieIndex = e.target.selectedIndex;
 
   // save the movie selection to local storage
-  saveMovieSelection(moviePrice, movieIndex);
+  saveMovieSelection(moviePrice, movieIndex, movieTitle);
 
   // update the text dynamically. It's important to run this after saveMovideSelection() because they're dependent on each other
   updateSelectedCount();
+
+  console.log(e.target.selectedOptions[0].dataset.title);
+  console.log(moviePrice);
 });
