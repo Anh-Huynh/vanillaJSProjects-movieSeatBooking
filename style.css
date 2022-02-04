@@ -58,8 +58,10 @@ body {
   margin: 3px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  font-size: 14px;
+  text-align: center;
 }
-.seat:nth-of-type(2) {
+.seat:nth-of-type(3) {
   margin-right: 18px;
 }
 .seat:nth-last-of-type(2) {
@@ -67,9 +69,11 @@ body {
 }
 .seat.occupied {
   background-color: #fff;
+  color: black;
 }
 .seat.selected {
   background-color: #6feaf6;
+  color: black;
 }
 
 .seat:not(.occupied):hover {
@@ -85,6 +89,10 @@ body {
   display: flex;
 }
 
+.seat-row {
+  margin-right: 10px;
+  width: 10px;
+}
 .show-case {
   display: flex;
   flex-direction: column;
@@ -125,6 +133,7 @@ p.text {
 div.content {
   padding: 5px 10px;
   border-radius: 5px;
+  width: 20vw;
 }
 p.text span {
   color: #6feaf6;
